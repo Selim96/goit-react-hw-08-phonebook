@@ -1,5 +1,5 @@
 import React from 'react';
-import ContactsPage from './Pages';
+import ContactsPage from './ContactsPages';
 // import { Oval } from 'react-loader-spinner';
 // import { getLoader } from 'redux/contacts/contacts-selectors';
 
