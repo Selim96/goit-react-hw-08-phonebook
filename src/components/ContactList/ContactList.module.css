@@ -1,0 +1,30 @@
+.list {
+    width: 400px;
+}
+
+.item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.itemNumber {
+    margin-left: 10px;
+    margin-right: 10px;
+    margin: 0;
+}
+
+.button {
+    border-radius: 5px;
+    width: 80px;
+    height: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 20px;
+}
+
+.spiner {
+    padding-left: 130px;
+}
