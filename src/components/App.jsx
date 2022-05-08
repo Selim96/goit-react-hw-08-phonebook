@@ -1,20 +1,12 @@
 import React from 'react';
-import ContactForm from './ContactForm';
-import Filter from './Filter';
-import ContactList from './ContactList';
+import ContactsPage from './Pages';
 // import { Oval } from 'react-loader-spinner';
 // import { getLoader } from 'redux/contacts/contacts-selectors';
 
 function App() {  
-  return <div>
-  <h1>Phonebook</h1>
-    <ContactForm />
-    <div className='contactsHeader'>
-      <h2 className='contactsTitle'>Contacts</h2>
-    </div>
-      <Filter />
-      <ContactList />
-</div>
+  return <>
+  <ContactsPage/>
+</>
 }
 
 // ===============================================
