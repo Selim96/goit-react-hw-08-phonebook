@@ -1,11 +1,41 @@
-import React from 'react';
-import ContactsPage from './ContactsPages';
+import React, { lazy, Suspense } from 'react';
+import { Route, Switch, Redirect } from "react-router-dom";
+import Container from '../container';
+import Appbar from './Appbar';
+const HomePage = lazy(() => import("./HomePage" /*webpackChankName: "home-view" */));
+const ContactsPage = lazy(() => import("./ContactsPage"));
+const Register = lazy(() => import("./Register"));
+const Login = lazy(() => import("./Login"));
 // import { Oval } from 'react-loader-spinner';
 // import { getLoader } from 'redux/contacts/contacts-selectors';
 
 function App() {  
   return <>
-  <ContactsPage/>
+    <Container>
+      <Appbar />
+
+      <Suspense fallback={<h2>Loading...</h2>}>
+        <Switch>
+          <Route path="/" exact>
+            <HomePage/>
+          </Route>
+
+          <Route  path="/contacts">
+            <ContactsPage/>
+          </Route>
+
+          <Route path="/register">
+            <Register/>
+          </Route>
+
+          <Route path="/login">
+            <Login/>
+          </Route>
+          
+        <Redirect to="/" />
+        </Switch>
+      </Suspense>
+    </Container>
 </>
 }
 
