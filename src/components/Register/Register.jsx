@@ -1,10 +1,14 @@
 import { useState } from 'react';
+import { useRegisterUserMutation } from 'redux/authPhonebook/auth-operations';
 import s from './Register.module.css';
 
 function Register() {
-    const [name, setName] = useState('');
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
+  const [registerUser] = useRegisterUserMutation();
+  console.log(useRegisterUserMutation())
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  
 
     const handlChange = e => {
     switch (e.currentTarget.name) {
@@ -27,20 +31,17 @@ function Register() {
     
     const handlSubmit = e => {
     e.preventDefault();
-    //   if () {
-        
-    //     return;
-    // };
-    // createContacts();
-      // dispatch(addContact(formOutput));
-        setName('');
+      registerUser({ name, email, password });
+      console.log(registerUser({ name, email, password }))
+      setName('');
       setEmail('');
       setPassword('');    
     }
 
     return <>
         <form onSubmit={handlSubmit}>
-            <label>
+        <label>
+          Name
                 <input
                     type='text'
                     name="name"
@@ -53,20 +54,20 @@ function Register() {
                     onChange={handlChange}
                 />
             </label>
-            <label>
+        <label>
+          Email
                 <input
                     type='text'
                     name="email"
                     className={s.formInput}
-                    pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-                    title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
                     required
                     placeholder='Enter email'
                     value={email}
                     onChange={handlChange}
                 />
             </label>
-            <label>
+        <label>
+          Password
                 <input
                     type="password"
                     name="password"

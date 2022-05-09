@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useCreateContactsMutation, useGetContactsQuery } from 'redux/contacts/contacts-RTK-operations';
+import { useCreateContactsMutation, useGetContactsQuery } from 'redux/authPhonebook/contacts-RTK-operations';
 import { Oval } from 'react-loader-spinner';
 import s from './ContactForm.module.css';
 

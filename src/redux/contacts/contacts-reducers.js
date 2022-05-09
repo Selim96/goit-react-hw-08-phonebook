@@ -13,11 +13,11 @@ import {
     fetchContactsError,
 } from '../contacts/contacts-actions';
 
-const itemsReducer = createReducer([], {
-    [fetchContactsSuccess]: (_, {payload}) => payload.reverse(),
-    [addContactsSuccess]: (state, { payload }) => ([payload, ...state]),
-    [deleteContactsSuccess]: (state, { payload }) => (state.filter(e => e.id !== payload))
-});
+// const itemsReducer = createReducer([], {
+//     [fetchContactsSuccess]: (_, {payload}) => payload.reverse(),
+//     [addContactsSuccess]: (state, { payload }) => ([payload, ...state]),
+//     [deleteContactsSuccess]: (state, { payload }) => (state.filter(e => e.id !== payload))
+// });
 
 const filterReducer = createReducer('', {
     [addFilter]: (_, { payload }) => payload
@@ -42,7 +42,6 @@ const error = createReducer('', {
 });
 
 export default combineReducers({
-    items: itemsReducer,
     filter: filterReducer,
     loader,
     error

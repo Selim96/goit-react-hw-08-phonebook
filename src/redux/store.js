@@ -12,27 +12,28 @@ import {
 } from 'redux-persist';
 import contactsReducer from './contacts/contacts-reducers';
 import { setupListeners } from '@reduxjs/toolkit/query'
-import { pokemonApi } from "./contacts/pokemon";
-import { contactsApi } from "./contacts/contacts-RTK-operations";
+import { contactsApi } from "./authPhonebook/contacts-RTK-operations";
+import authReducer from './authPhonebook/auth-slice';
 
-const persistConfig = {
-    key: 'contacts',
+const authPersistConfig = {
+    key: 'auth',
     storage,
-    blacklist: 'filter' 
+    whitelist: ['token'] 
 };
 
-const ignoredActions = {
-        serializableCheck: {
-            ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
-        },
-    }
+const middleware = (getDefaultMiddleware) => [...getDefaultMiddleware({
+    serializableCheck: {
+        ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+    },
+}), contactsApi.middleware];
 
 export const store = configureStore({
     reducer: {
-        contacts: persistReducer(persistConfig, contactsReducer),
+        contacts: contactsReducer,
+        auth: persistReducer(authPersistConfig, authReducer),
         [contactsApi.reducerPath]: contactsApi.reducer,
     },
-    middleware: (getDefaultMiddleware) => [...getDefaultMiddleware(ignoredActions), pokemonApi.middleware, contactsApi.middleware],
+    middleware,
 });
 
 setupListeners(store.dispatch);

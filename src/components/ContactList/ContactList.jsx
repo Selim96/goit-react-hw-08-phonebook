@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux';
-import { useGetContactsQuery, useDeleteContactsMutation } from 'redux/contacts/contacts-RTK-operations';
+import { useGetContactsQuery, useDeleteContactsMutation } from 'redux/authPhonebook/contacts-RTK-operations';
 import { getFilterValue } from 'redux/contacts/contacts-selectors';
 import { Oval } from 'react-loader-spinner';
 import s from './ContactList.module.css';
